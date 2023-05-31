@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Background Color Changer</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <div id="ireng" class="title">PILIH WARNA</div>
+        <div class="box">
+            <div class="circle red"></div>
+            <div class="circle green"></div>
+            <div class="circle blue"></div>
+            <div class="circle yellow"></div>
+            <div class="circle purple"></div>
+            <div class="circle orange"></div>
+            <div onclick="hitam()" class="circle black"></div>
+        </div>
+        <a onclick="reset()" id="putih" class="reset">RESET WARNA</a>
+    </div>
+    <script>
+        // Merubah warna background sesuai value yg ada di class
+        const circles = document.querySelectorAll(".circle");
+        circles.forEach((circle) => {
+            circle.addEventListener("click", ({ target }) => {
+                const { backgroundColor } = getComputedStyle(target);
+                document.body.style.backgroundColor = backgroundColor;
+            });
+        });
+        // Merubah warna ketika text (pilih warna) tidak terlihat
+        const a = document.getElementById("ireng");
+        const p = document.getElementById("putih");
+        function hitam(){
+            a.style.color = "white";
+            p.style.color = "white";
+        }
+        // Merubah warna ketika text (reset warna) tidak terlihat
+        function reset(){
+            a.style.color = "black";
+            p.style.color = "black";
+            document.body.style.backgroundColor = "white";
+        }
+    </script>
+</body>
+</html>
